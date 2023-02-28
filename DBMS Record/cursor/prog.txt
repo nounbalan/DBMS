@@ -1,0 +1,32 @@
+/*create table studentdetails(regno number(10),name varchar2(15),college varchar2(10),age number(2));*/
+--insert into studentdetails values(13,'Sandro','PU',15);
+--select * from studentdetails;
+--truncate table studentdetails;
+DECLARE 
+   regno studentdetails.regno%type; 
+   name studentdetails.name%type; 
+   college studentdetails.college%type; 
+   age studentdetails.age%type;
+   CURSOR s_students is 
+      SELECT regno, name, college, age FROM studentdetails; 
+procedure pro as
+BEGIN 
+   OPEN s_students; 
+   LOOP 
+   FETCH s_students into regno, name, college,age; 
+      EXIT WHEN s_students%notfound; 
+      dbms_output.put_line(regno || ' ' || name || ' ' || college ||' '|| age); 
+   END LOOP; 
+   CLOSE s_students; 
+END; 
+begin
+pro();
+end;
+/
+
+output:
+-----------------
+Statement processed.
+12 Raju PU 21
+11 Balan PU 20
+13 Sandro PU 15

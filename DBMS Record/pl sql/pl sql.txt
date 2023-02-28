@@ -1,0 +1,61 @@
+1.Addition of two numbers
+---------------------------------
+SQL> SET SERVEROUTPUT ON;
+SQL> declare
+  2  x number(5);
+  3  y number(5);
+  4  z number(5);
+  5  begin
+  6  x:=50;
+  7  y:=20;
+  8  z:=x+y;
+  9  dbms_output.put_line('sum is'||z);
+ 10  end;
+ 11  /
+output:
+----------
+sum is70
+
+PL/SQL procedure successfully completed.
+
+2.Generating Series
+----------------------------
+
+SQL> SET SERVEROUTPUT ON;
+SQL> declare
+  2  n number(5);
+  3  begin
+  4  n:=1;
+  5  for i in 1..10 loop
+  6  case n
+  7  when 1 then
+  8  dbms_output.put_line(i);
+  9  when 2 then
+ 10  if mod(i,2)=0 then
+ 11  dbms_output.put_line(i);
+ 12  end if;
+ 13  when 3 then
+ 14  if mod(i,2)!=0 then
+ 15  dbms_output.put_line(i);
+ 16  end if;
+ 17  end case;
+ 18  end loop;
+ 19  end;
+ 20  /
+output:
+-------
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+
+deepak19ca0412@gmail.com
