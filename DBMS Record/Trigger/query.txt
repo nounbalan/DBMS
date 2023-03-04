@@ -1,0 +1,23 @@
+create table medic(mid int(2), medname varchar(15),price int(4),quantity int(2));
+create table neworder....;
+---------------------------------------------------------
+TRIGGER
+-------
+
+
+delimiter $$
+create trigger neworderformedicine
+after update on medic
+for each row
+begin
+if new.quantity<20 then
+insert into neworder values(new.mid,sysdate(),200);
+end if;
+end;
+$$
+-------------------------------------------------------------------------------
+
+update medic set quantity=15 where mid=1;
+
+select * from medic;
+select * from neworder;
